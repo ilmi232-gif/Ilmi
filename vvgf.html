@@ -1,0 +1,1580 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA STORE</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #070b14;
+  --card: #111827;
+  --cyan: #00f5ff;
+  --purple: #a855f7;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --green: #25d366;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Poppins, sans-serif;
+  overflow-x: hidden;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #070b14ed;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #ffffff12;
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  font: 800 23px Orbitron, sans-serif;
+  color: var(--cyan);
+  text-shadow: 0 0 15px #00f5ff66;
+}
+
+.navlinks {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.navlinks a:hover {
+  color: var(--cyan);
+}
+
+.cart-button {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  border: 0;
+}
+
+/* HERO */
+
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 75px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.tag {
+  display: inline-block;
+  color: var(--cyan);
+  border: 1px solid #00f5ff55;
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font: 800 clamp(35px, 7vw, 65px)/1.2 Orbitron, sans-serif;
+  margin-bottom: 20px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px #00f5ff44;
+}
+
+.secondary {
+  background: transparent;
+  color: white;
+  border: 1px solid #ffffff25;
+  padding: 13px 20px;
+  border-radius: 12px;
+}
+
+.orb {
+  width: 240px;
+  height: 240px;
+  margin: auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 25%, white, var(--cyan) 12%, var(--purple) 40%, #070b14 72%);
+  box-shadow: 0 0 70px #00f5ff33;
+  animation: float 4s ease-in-out infinite;
+  position: relative;
+}
+
+.orb::after {
+  content: "";
+  position: absolute;
+  inset: -25px;
+  border: 1px solid #00f5ff66;
+  border-radius: 50%;
+  transform: rotateX(65deg);
+  animation: rotate 9s linear infinite;
+}
+
+/* SECTION */
+
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 50px 20px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.heading h2 {
+  font: 700 clamp(25px, 5vw, 36px) Orbitron, sans-serif;
+  margin-bottom: 12px;
+}
+
+.heading p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.search {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto 20px;
+  background: var(--card);
+  border: 1px solid #ffffff20;
+  border-radius: 12px;
+  color: white;
+  padding: 13px 16px;
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 30px;
+}
+
+.filter {
+  padding: 9px 15px;
+  background: var(--card);
+  color: var(--muted);
+  border: 1px solid #ffffff15;
+  border-radius: 30px;
+}
+
+.filter.active {
+  background: var(--cyan);
+  color: #000;
+}
+
+/* PRODUCTS */
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.product {
+  background: linear-gradient(145deg, #111827, #0b1020);
+  border: 1px solid #ffffff12;
+  border-radius: 18px;
+  overflow: hidden;
+  animation: appear .5s both;
+  transition: .3s;
+}
+
+.product:hover {
+  transform: translateY(-6px);
+  border-color: #00f5ff55;
+  box-shadow: 0 10px 30px #00f5ff12;
+}
+
+.product-image {
+  height: 155px;
+  display: grid;
+  place-items: center;
+  font-size: 65px;
+  background: radial-gradient(circle, #00f5ff15, transparent 70%);
+}
+
+.product-info {
+  padding: 17px;
+}
+
+.product-info h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.product-info p {
+  font-size: 11px;
+  color: var(--muted);
+  min-height: 35px;
+}
+
+.price {
+  color: var(--cyan);
+  font-size: 19px;
+  font-weight: 700;
+  margin: 15px 0;
+}
+
+.add-button {
+  width: 100%;
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+  border: 0;
+  padding: 11px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+/* CART */
+
+.cart {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: min(390px, 100%);
+  height: 100%;
+  background: #101625;
+  border-left: 1px solid #ffffff20;
+  padding: 22px;
+  z-index: 50;
+  transition: .35s;
+  overflow-y: auto;
+}
+
+.cart.open {
+  right: 0;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.close {
+  background: transparent;
+  color: white;
+  font-size: 27px;
+  border: 0;
+}
+
+.cart-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #ffffff15;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cart-item small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.quantity button {
+  border: 0;
+  background: #273349;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  margin: 22px 0;
+  font-weight: 700;
+}
+
+/* MODAL */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: #000b;
+  backdrop-filter: blur(8px);
+  padding: 12px;
+}
+
+.modal.open {
+  display: flex;
+}
+
+.modal-box {
+  width: 100%;
+  max-width: 480px;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #111827;
+  border: 1px solid #00f5ff44;
+  border-radius: 20px;
+  padding: 22px;
+  animation: appear .3s;
+}
+
+.modal label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 14px 0 6px;
+}
+
+.modal input,
+.modal textarea,
+.modal select {
+  width: 100%;
+  background: #080b14;
+  border: 1px solid #ffffff20;
+  color: white;
+  border-radius: 10px;
+  padding: 12px;
+  outline: none;
+}
+
+.modal textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.modal input:focus,
+.modal textarea:focus,
+.modal select:focus {
+  border-color: var(--cyan);
+}
+
+.bank-box {
+  background: #080b14;
+  border: 1px solid #ffffff15;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.bank-box strong {
+  color: var(--cyan);
+}
+
+.bank-number {
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.copy-button {
+  background: #263349;
+  color: white;
+  border: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.modal-total {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cyan);
+  margin: 20px 0;
+}
+
+.modal-actions {
+  display: grid;
+  gap: 10px;
+}
+
+.whatsapp-button {
+  background: var(--green);
+  color: #000;
+  padding: 13px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.bank-button {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #000;
+  padding: 13px;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.cancel-button {
+  background: #263349;
+  color: white;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* INFO */
+
+.benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.benefit {
+  text-align: center;
+  background: var(--card);
+  border: 1px solid #ffffff12;
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.benefit span {
+  font-size: 32px;
+}
+
+.benefit h3 {
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.benefit p {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+/* WHATSAPP */
+
+.float-wa {
+  position: fixed;
+  bottom: 20px;
+  right: 18px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: #000;
+  font-size: 25px;
+  z-index: 30;
+  box-shadow: 0 0 20px #25d36644;
+  animation: pulse 2s infinite;
+}
+
+footer {
+  border-top: 1px solid #ffffff12;
+  text-align: center;
+  padding: 30px 15px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+footer strong {
+  color: var(--cyan);
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-17px); }
+}
+
+@keyframes rotate {
+  to { transform: rotateX(65deg) rotateZ(360deg); }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 #25d36655; }
+  50% { box-shadow: 0 0 0 10px #25d36600; }
+}
+
+/* MOBILE */
+
+@media(max-width: 750px) {
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  .hero p {
+    margin: auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .orb {
+    width: 175px;
+    height: 175px;
+  }
+
+  .navlinks {
+    display: none;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 11px;
+  }
+
+  .product-image {
+    height: 125px;
+    font-size: 50px;
+  }
+
+  .product-info {
+    padding: 12px;
+  }
+
+  .product-info h3 {
+    font-size: 13px;
+  }
+
+  .product-info p {
+    font-size: 10px;
+  }
+
+  .price {
+    font-size: 15px;
+  }
+
+  .benefits {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width: 360px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="navbar">
+
+    <a class="logo" href="#home">NEXORA.</a>
+
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#produk">Produk</a>
+      <a href="#layanan">Layanan</a>
+    </div>
+
+    <button class="cart-button" onclick="toggleCart()">
+      🛒 <span id="cartCount">0</span>
+    </button>
+
+  </nav>
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div>
+
+    <span class="tag">⚡ FUTURE SHOPPING</span>
+
+    <h1>
+      BELANJA<br>
+      <span class="gradient">TANPA BATAS.</span>
+    </h1>
+
+    <p>
+      Temukan produk terbaik dengan pengalaman
+      belanja futuristik, mudah, cepat, dan nyaman.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="#produk" class="primary">
+        🛍️ Belanja Sekarang
+      </a>
+
+      <a href="#layanan" class="secondary">
+        Layanan Kami
+      </a>
+
+    </div>
+
+  </div>
+
+  <div>
+    <div class="orb"></div>
+  </div>
+
+</section>
+
+<!-- PRODUK -->
+
+<section class="section" id="produk">
+
+  <div class="heading">
+
+    <span class="tag">OUR COLLECTION</span>
+
+    <h2>Produk <span class="gradient">Pilihan</span></h2>
+
+    <p>Temukan produk terbaik untuk kebutuhanmu.</p>
+
+  </div>
+
+  <input
+    class="search"
+    id="search"
+    type="search"
+    placeholder="🔍 Cari produk..."
+    oninput="renderProducts()"
+  >
+
+  <div class="filters">
+
+    <button class="filter active"
+      onclick="setFilter('Semua',this)">
+      Semua
+    </button>
+
+    <button class="filter"
+      onclick="setFilter('Elektronik',this)">
+      Elektronik
+    </button>
+
+    <button class="filter"
+      onclick="setFilter('Fashion',this)">
+      Fashion
+    </button>
+
+    <button class="filter"
+      onclick="setFilter('Aksesoris',this)">
+      Aksesoris
+    </button>
+
+  </div>
+
+  <div class="products" id="products"></div>
+
+</section>
+
+<!-- LAYANAN -->
+
+<section class="section" id="layanan">
+
+  <div class="heading">
+
+    <h2>Kenapa <span class="gradient">NEXORA?</span></h2>
+
+    <p>Belanja lebih mudah dan nyaman.</p>
+
+  </div>
+
+  <div class="benefits">
+
+    <div class="benefit">
+      <span>🚀</span>
+      <h3>Checkout Mudah</h3>
+      <p>Pesan produk langsung melalui WhatsApp.</p>
+    </div>
+
+    <div class="benefit">
+      <span>🏦</span>
+      <h3>Transfer Bank</h3>
+      <p>Informasi rekening tersedia saat checkout.</p>
+    </div>
+
+    <div class="benefit">
+      <span>💬</span>
+      <h3>Customer Service</h3>
+      <p>Hubungi admin untuk bantuan pesanan.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  <p>© 2026 <strong>NEXORA STORE</strong></p>
+  <p>Future Shopping Experience.</p>
+</footer>
+
+<!-- KERANJANG -->
+
+<div class="cart" id="cart">
+
+  <div class="cart-header">
+
+    <h2>🛒 Keranjang</h2>
+
+    <button class="close" onclick="toggleCart()">×</button>
+
+  </div>
+
+  <div id="cartItems"></div>
+
+  <div class="total">
+    <span>Total</span>
+    <span id="cartTotal">Rp0</span>
+  </div>
+
+  <button class="primary" style="width:100%"
+    onclick="openCheckout()">
+
+    Checkout Sekarang →
+
+  </button>
+
+</div>
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkout">
+
+  <div class="modal-box">
+
+    <div class="cart-header">
+
+      <h2>📦 Checkout</h2>
+
+      <button class="close" onclick="closeCheckout()">×</button>
+
+    </div>
+
+    <form id="checkoutForm">
+
+      <label>Nama Lengkap</label>
+
+      <input
+        id="name"
+        type="text"
+        maxlength="100"
+        required
+        placeholder="Nama penerima"
+      >
+
+      <label>Nomor WhatsApp</label>
+
+      <input
+        id="phone"
+        type="tel"
+        maxlength="20"
+        required
+        placeholder="08xxxxxxxxxx"
+      >
+
+      <label>Alamat Lengkap</label>
+
+      <textarea
+        id="address"
+        maxlength="500"
+        required
+        placeholder="Alamat pengiriman"
+      ></textarea>
+
+      <label>Metode Pembayaran</label>
+
+      <select id="payment" onchange="changePayment()">
+
+        <option value="Transfer Bank">
+          Transfer Bank
+        </option>
+
+        <option value="COD">
+          COD / Bayar di Tempat
+        </option>
+
+      </select>
+
+      <!-- INFORMASI BANK -->
+
+      <div class="bank-box" id="bankInfo">
+
+        <strong>🏦 INFORMASI TRANSFER</strong>
+
+        <br>
+
+        Bank:
+        <span id="bankName">BCA</span>
+
+        <br>
+
+        Nomor rekening:
+
+        <div class="bank-number" id="bankNumber">
+          1234567890
+        </div>
+
+        Atas nama:
+        <strong id="bankOwner">NAMA TOKO</strong>
+
+        <br>
+
+        <button type="button"
+          class="copy-button"
+          onclick="copyBank()">
+
+          📋 Salin Nomor Rekening
+
+        </button>
+
+        <br><br>
+
+        Silakan transfer sesuai total pesanan
+        dan konfirmasi melalui WhatsApp admin.
+
+      </div>
+
+      <div class="modal-total">
+        Total: <span id="checkoutTotal">Rp0</span>
+      </div>
+
+      <div class="modal-actions">
+
+        <button type="button"
+          class="whatsapp-button"
+          onclick="checkoutWhatsApp()">
+
+          📲 Pesan via WhatsApp
+
+        </button>
+
+        <button type="button"
+          class="bank-button"
+          onclick="confirmOrder()">
+
+          🏦 Konfirmasi Transfer Bank
+
+        </button>
+
+        <button type="button"
+          class="cancel-button"
+          onclick="closeCheckout()">
+
+          Kembali Belanja
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- FLOATING WHATSAPP -->
+
+<a class="float-wa"
+  id="floatingWA"
+  href="#"
+  target="_blank"
+  rel="noopener"
+  aria-label="WhatsApp admin">
+
+  ☎
+
+</a>
+
+<script>
+
+/* =====================================
+   KONFIGURASI TOKO
+===================================== */
+
+// GANTI NOMOR WHATSAPP ADMIN
+// Gunakan format 62xxxxxxxxxx
+
+const WHATSAPP = "6287874461124";
+
+// GANTI INFORMASI BANK
+
+const BANK = {
+  nama: "SEABANK",
+  rekening: "901584573400",
+  pemilik: "Muhammad Ilmi Hidayat"
+};
+
+/* =====================================
+   DATA PRODUK
+===================================== */
+
+const products = [
+
+  {
+    id: 1,
+    name: "Headphone Cyber",
+    category: "Elektronik",
+    price: 250000,
+    emoji: "🎧",
+    description: "Headphone modern dengan suara jernih."
+  },
+
+  {
+    id: 2,
+    name: "Smart Watch",
+    category: "Elektronik",
+    price: 450000,
+    emoji: "⌚",
+    description: "Jam pintar dengan desain premium."
+  },
+
+  {
+    id: 3,
+    name: "Sneakers Future",
+    category: "Fashion",
+    price: 350000,
+    emoji: "👟",
+    description: "Sneakers stylish untuk sehari-hari."
+  },
+
+  {
+    id: 4,
+    name: "Jaket Streetwear",
+    category: "Fashion",
+    price: 280000,
+    emoji: "🧥",
+    description: "Jaket modern gaya streetwear."
+  },
+
+  {
+    id: 5,
+    name: "Gaming Mouse",
+    category: "Elektronik",
+    price: 175000,
+    emoji: "🖱️",
+    description: "Mouse gaming responsif."
+  },
+
+  {
+    id: 6,
+    name: "Kacamata Cyber",
+    category: "Aksesoris",
+    price: 150000,
+    emoji: "🕶️",
+    description: "Aksesoris futuristik."
+  }
+
+];
+
+/* =====================================
+   STATE
+===================================== */
+
+let cart = [];
+
+let activeFilter = "Semua";
+
+const rupiah = number =>
+
+  new Intl.NumberFormat("id-ID", {
+
+    style: "currency",
+
+    currency: "IDR",
+
+    maximumFractionDigits: 0
+
+  }).format(number);
+
+/* =====================================
+   PRODUK
+===================================== */
+
+function renderProducts() {
+
+  const search = document
+    .getElementById("search")
+    .value
+    .toLowerCase();
+
+  const filtered = products.filter(product => {
+
+    const categoryMatch =
+      activeFilter === "Semua" ||
+      product.category === activeFilter;
+
+    const searchMatch =
+      product.name.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search);
+
+    return categoryMatch && searchMatch;
+
+  });
+
+  const container =
+    document.getElementById("products");
+
+  if (filtered.length === 0) {
+
+    container.textContent = "Produk tidak ditemukan.";
+
+    return;
+
+  }
+
+  container.innerHTML = filtered.map(product => `
+
+    <article class="product">
+
+      <div class="product-image">
+        ${product.emoji}
+      </div>
+
+      <div class="product-info">
+
+        <h3>${product.name}</h3>
+
+        <p>${product.description}</p>
+
+        <div class="price">
+          ${rupiah(product.price)}
+        </div>
+
+        <button class="add-button"
+          onclick="addToCart(${product.id})">
+
+          + Tambah Keranjang
+
+        </button>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
+function setFilter(category, button) {
+
+  activeFilter = category;
+
+  document.querySelectorAll(".filter")
+    .forEach(item => item.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderProducts();
+
+}
+
+/* =====================================
+   KERANJANG
+===================================== */
+
+function addToCart(id) {
+
+  const product =
+    products.find(item => item.id === id);
+
+  if (!product) return;
+
+  const existing =
+    cart.find(item => item.id === id);
+
+  if (existing) {
+
+    existing.qty++;
+
+  } else {
+
+    cart.push({
+      ...product,
+      qty: 1
+    });
+
+  }
+
+  updateCart();
+
+}
+
+function changeQty(id, amount) {
+
+  const item =
+    cart.find(product => product.id === id);
+
+  if (!item) return;
+
+  item.qty += amount;
+
+  if (item.qty <= 0) {
+
+    cart = cart.filter(product => product.id !== id);
+
+  }
+
+  updateCart();
+
+}
+
+function getTotal() {
+
+  return cart.reduce((total, item) => {
+
+    return total + item.price * item.qty;
+
+  }, 0);
+
+}
+
+function updateCart() {
+
+  const count = cart.reduce(
+    (total, item) => total + item.qty,
+    0
+  );
+
+  document.getElementById("cartCount")
+    .textContent = count;
+
+  document.getElementById("cartTotal")
+    .textContent = rupiah(getTotal());
+
+  document.getElementById("checkoutTotal")
+    .textContent = rupiah(getTotal());
+
+  const container =
+    document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+
+    container.textContent =
+      "Keranjang masih kosong.";
+
+    return;
+
+  }
+
+  container.innerHTML = cart.map(item => `
+
+    <div class="cart-item">
+
+      <div>
+
+        <strong>${item.emoji} ${item.name}</strong>
+
+        <br>
+
+        <small>${rupiah(item.price)} / produk</small>
+
+        <div class="quantity">
+
+          <button onclick="changeQty(${item.id},-1)">−</button>
+
+          <span>${item.qty}</span>
+
+          <button onclick="changeQty(${item.id},1)">+</button>
+
+        </div>
+
+      </div>
+
+      <strong>
+        ${rupiah(item.price * item.qty)}
+      </strong>
+
+    </div>
+
+  `).join("");
+
+}
+
+function toggleCart() {
+
+  document.getElementById("cart")
+    .classList.toggle("open");
+
+}
+
+/* =====================================
+   CHECKOUT
+===================================== */
+
+function openCheckout() {
+
+  if (cart.length === 0) {
+
+    alert("Keranjang masih kosong!");
+
+    return;
+
+  }
+
+  toggleCart();
+
+  document.getElementById("checkout")
+    .classList.add("open");
+
+}
+
+function closeCheckout() {
+
+  document.getElementById("checkout")
+    .classList.remove("open");
+
+}
+
+/* =====================================
+   PEMBAYARAN
+===================================== */
+
+function changePayment() {
+
+  const method =
+    document.getElementById("payment").value;
+
+  const bankInfo =
+    document.getElementById("bankInfo");
+
+  bankInfo.style.display =
+    method === "Transfer Bank" ? "block" : "none";
+
+}
+
+function copyBank() {
+
+  const rekening = BANK.rekening;
+
+  if (navigator.clipboard &&
+      window.isSecureContext) {
+
+    navigator.clipboard.writeText(rekening)
+      .then(() => {
+        alert("Nomor rekening berhasil disalin!");
+      })
+      .catch(() => {
+        prompt("Salin nomor rekening:", rekening);
+      });
+
+  } else {
+
+    prompt("Salin nomor rekening:", rekening);
+
+  }
+
+}
+
+/* =====================================
+   VALIDASI PELANGGAN
+===================================== */
+
+function getCustomer() {
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  const address =
+    document.getElementById("address").value.trim();
+
+  const method =
+    document.getElementById("payment").value;
+
+  if (!name || !phone || !address) {
+
+    alert("Lengkapi nama, nomor WhatsApp, dan alamat!");
+
+    return null;
+
+  }
+
+  if (!/^[0-9+\-\s]{8,20}$/.test(phone)) {
+
+    alert("Nomor WhatsApp tidak valid!");
+
+    return null;
+
+  }
+
+  if (cart.length === 0) {
+
+    alert("Keranjang masih kosong!");
+
+    return null;
+
+  }
+
+  return {
+    name,
+    phone,
+    address,
+    method
+  };
+
+}
+
+/* =====================================
+   BUAT PESAN PESANAN
+===================================== */
+
+function createOrderMessage(customer) {
+
+  const orderId =
+    "NX" + Date.now().toString().slice(-8);
+
+  const items = cart.map(item => {
+
+    return (
+
+      "- " + item.name +
+
+      " x" + item.qty +
+
+      " = " + rupiah(item.price * item.qty)
+
+    );
+
+  }).join("\n");
+
+  const message = `
+
+🛍️ *PESANAN NEXORA STORE*
+
+Nomor Pesanan: ${orderId}
+
+👤 Nama: ${customer.name}
+
+📱 WhatsApp: ${customer.phone}
+
+📍 Alamat:
+${customer.address}
+
+📦 Produk:
+${items}
+
+💰 Total: ${rupiah(getTotal())}
+
+🏦 Pembayaran: ${customer.method}
+
+${customer.method === "Transfer Bank" ?
+
+"Bank: " + BANK.nama +
+"\nRekening: " + BANK.rekening +
+"\nAtas nama: " + BANK.pemilik :
+
+"Pembayaran COD. Konfirmasi ketersediaan kepada admin."}
+
+Mohon konfirmasi pesanan saya.
+
+Terima kasih!
+
+  `.trim();
+
+  return {
+    orderId,
+    message
+  };
+
+}
+
+/* =====================================
+   WHATSAPP CHECKOUT
+===================================== */
+
+function checkoutWhatsApp() {
+
+  const customer = getCustomer();
+
+  if (!customer) return;
+
+  const order = createOrderMessage(customer);
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP +
+    "?text=" +
+    encodeURIComponent(order.message);
+
+  // Buka WhatsApp.
+  // Pelanggan harus menekan tombol KIRIM.
+
+  window.open(url, "_blank");
+
+}
+
+/* =====================================
+   KONFIRMASI TRANSFER BANK
+===================================== */
+
+function confirmOrder() {
+
+  const customer = getCustomer();
+
+  if (!customer) return;
+
+  if (customer.method !== "Transfer Bank") {
+
+    alert("Pilih Transfer Bank terlebih dahulu.");
+
+    return;
+
+  }
+
+  const order = createOrderMessage(customer);
+
+  alert(
+
+    "Silakan transfer ke rekening:\n\n" +
+
+    BANK.nama + "\n" +
+
+    BANK.rekening + "\n" +
+
+    "Atas nama: " + BANK.pemilik + "\n\n" +
+
+    "Total: " + rupiah(getTotal()) + "\n\n" +
+
+    "WhatsApp akan dibuka untuk konfirmasi pesanan."
+
+  );
+
+  const url =
+    "https://wa.me/" +
+    WHATSAPP +
+    "?text=" +
+    encodeURIComponent(order.message);
+
+  window.open(url, "_blank");
+
+}
+
+/* =====================================
+   WHATSAPP ADMIN
+===================================== */
+
+document.getElementById("floatingWA").href =
+  "https://wa.me/" + WHATSAPP;
+
+/* =====================================
+   MULAI WEBSITE
+===================================== */
+
+document.getElementById("bankName")
+  .textContent = BANK.nama;
+
+document.getElementById("bankNumber")
+  .textContent = BANK.rekening;
+
+document.getElementById("bankOwner")
+  .textContent = BANK.pemilik;
+
+renderProducts();
+
+updateCart();
+
+changePayment();
+
+</script>
+
+</body>
+</html>
